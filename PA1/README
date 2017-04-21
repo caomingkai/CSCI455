@@ -1,5 +1,5 @@
-Name: 
-USC NetId:
+Name: Mingkai Cao
+USC NetId: 7151889244
 CSCI 455 PA1
 Spring 2017
 
@@ -46,19 +46,20 @@ ANY OTHER NOTES FOR THE GRADER:
 ----------------------------------------------
 ANSWERS TO ASSIGNMENT README QUESTIONS (if applicable):
 
-1. probability is: 25% for two-head,  25% for two-tail, and 50% for head-tail.
+1. The probability is: 25% for two-head,  25% for two-tail, and 50% for head-tail.
+   Reason:
    For two coins A and B, the result of a toss only have four outcomes: 
    A-head / B-head
    A-head / B-tail
    A-tail / B-head
    A-tail / B-tail
-   So we can see, there are 2 outcomes for the head-tail, but 1 outcome for two-head or
-   two-tails out of the total 4 outcomes.
+   So we can see, there are 2 outcomes for the head-tail, and 1 outcome for both two-head  
+   and two-tails out of the total 4 outcomes.
    Then we can say the probability is 25% for two-head,  25% for two-tail, and 50% for
    head-tail.
 
 2. 4500
-3. The largest value you tried where it still worked correctly is 2147483647
+3. The largest value I tried where it still worked correctly is 2147483647
    And the one where it overflowed is 2147483648
 
 

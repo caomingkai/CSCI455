@@ -3,35 +3,36 @@
 // CS 455 PA1
 // Spring 2017
 
+import java.util.Random;
+
 /**
  * class CoinTossSimulator
  *
  * Simulates trials of tossing two coins and allows the user to access the
  * cumulative results.
- *
+
  * Invariant: getNumTrials() = getTwoHeads() + getTwoTails() + getHeadTails()
  */
-
-import java.util.Random;
-
 public class CoinTossSimulator {
     /**
        @param twoHeadsNumTotal  cumulative results of TWO_HEAD after run() is executed.
        @param twoTailsNumTotal  cumulative results of TWO_TAIL after run() is executed.
        @param headTailNumTotal  cumulative results of HEAD_TAIL after run() is executed.
     */
+
     private int twoHeadsNumTotal;
     private int twoTailsNumTotal;
     private int headTailNumTotal;
 
     /**
-        Creates a coin toss simulator with no trials done yet.
+        Creates a CoinTossSimulator object with no trials done yet.
     */
-        public CoinTossSimulator() {
-            twoHeadsNumTotal = 0;
-            twoTailsNumTotal = 0;
-            headTailNumTotal = 0;
-        }
+    public CoinTossSimulator() {
+        twoHeadsNumTotal = 0;
+        twoTailsNumTotal = 0;
+        headTailNumTotal = 0;
+    }
+
 
     /**
       Runs the simulation for numTrials more trials. Multiple calls to this
@@ -44,12 +45,11 @@ public class CoinTossSimulator {
         0 stands for two-tails result
         1 stands for head-tail result
         2 stands for two-heads result
-
       @param numTrials  number of trials to for simulation; must be >= 1
     */
     public void run(int numTrials) {
 
-        final int RANDOM_BOUNDRY = 2; // boundry for nextInt()
+        final int RANDOM_BOUNDRY = 2; // boundry for Random.nextInt()
         int tossResult1;    //toss result for the 1st coin
         int tossResult2;    //toss result for the 2nd coin
         int tossResult;     //toss result for the two coins

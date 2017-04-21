@@ -16,18 +16,14 @@ import javax.swing.JComponent;
 /**
  * class CoinSimComponent
  *
- * Get the numOfTrials from Clas CoinSimViewer, then run the simulation using CoinTossSimulator()
- * Draw each bar corresponding to simulation result.
- *
+ * 1 - Get the numOfTrials from Clas CoinSimViewer
+ * 2 - Run the simulation using CoinTossSimulator()
+ * 3 - Draw each bar corresponding to simulation result.
  *|------'use what'---------------------------------------------
- *|
  *|     coinTossSimulator() : conduct simulation
  *|     Bar() :  draw different Bars
- *|
- *|------'be used for what'--------------------------------------
- *|
+ *|------'be used by what'--------------------------------------
  *|     CoinSimViewer() : have Frame to contain CoinSimComponent
- *|
  *|--------------------------------------------------------------
  */
 
@@ -36,14 +32,12 @@ public class CoinSimComponent extends JComponent{
         @param numTwoHeads  cumulative results of TWO_HEAD after run() is executed.
         @param numTwoTails  cumulative results of TWO_TAIL after run() is executed.
         @param numHeadTails  cumulative results of HEAD_TAIL after run() is executed.
+        @param numOfTrials   cumulative results for all the outcomes after run() is executed.
     */
     private int numTwoHeads;
     private int numTwoTails;
     private int numHeadTails;
     private int numOfTrials;
-    // private int percentTwoHeads;
-    // private int percentTwoTails;
-    // private int percentHeadTails;
 
     /**
         constructor with an argument 'numOfTrials'
@@ -59,13 +53,7 @@ public class CoinSimComponent extends JComponent{
         numTwoTails = simulator.getTwoTails();
         numHeadTails = simulator.getHeadTails();
         this.numOfTrials = numOfTrials;
-
-        // percentTwoHeads = Math.round( numTwoHeads / ( (float)numOfTrials ) * 100);
-        // percentTwoTails = Math.round( numTwoTails / ( (float)numOfTrials )  * 100);
-        // percentHeadTails = Math.round( numHeadTails / ( (float)numOfTrials )  * 100);
-        // System.out.println("Sum should be 100: " + (percentTwoHeads + percentHeadTails+  percentTwoTails ) );
-    }
-
+      }
 
 
     /**
@@ -73,23 +61,23 @@ public class CoinSimComponent extends JComponent{
         @param g
     */
     public void paintComponent( Graphics g){
+
         //Recover Graphics2D
         Graphics2D g2 = (Graphics2D) g;
 
-        final int Y_PADDING = 30; // fixed distance from label bottom to the upper andlower border of the graph
+        final int Y_PADDING = 30; // fixed distance from label bottom to the upper and lower border of the graph
         final int BAR_WIDTH = 100;// fixed width of each bar
-        final int APPLICATION_UNIT_GROSS = 100;// how many application_unit for 100% barHeight
+        final int APPLICATION_UNIT_GROSS = 100;// how many application_units for 100% barHeight
 
-        // why no object???
-        // the width is the same with the JFrame???
-        // get the width and height of the component
-        int gWidth = getWidth();
-        int gHeight = getHeight();
-        int bottom = gHeight-Y_PADDING;// location of the bottom of the label
+
+
+        int gWidth = getWidth();            // get the width of the component
+        int gHeight = getHeight();          // get the height of the component
+        int bottom = gHeight - Y_PADDING;   // location of the bottom of the label
         int xPadding = (gWidth - 3 * BAR_WIDTH) / 4;  // buffer-space between bars and windows
 
-        // calculate the heightOfLabel in order to calculate the scale
-        String label = "just for test the 'heightOfLabel'  ";
+        // calculate the heightOfLabel in order to determine the scale
+        String label = "just for testing the 'heightOfLabel'  ";
         Font font = g2.getFont();
         FontRenderContext context = g2.getFontRenderContext();
         Rectangle2D   labelBounds = font.getStringBounds(label, context);
@@ -99,24 +87,24 @@ public class CoinSimComponent extends JComponent{
 
 
         // 1st bar for TwoHeads
-        int left1 = xPadding; //
-        int percentTwoHeads = (int)Math.round( numTwoHeads / (double)numOfTrials * 100);
+        int left1 = xPadding;   //location of the left side of the bar
+        int percentTwoHeads = (int)Math.round( numTwoHeads / (double)numOfTrials * APPLICATION_UNIT_GROSS);
         String label1 = "Two Head: " + numTwoHeads + "(" + percentTwoHeads + "%)";
         Bar bar1 = new Bar(bottom, left1, BAR_WIDTH, percentTwoHeads, scale, Color.RED , label1);
         bar1.draw(g2);
 
         // 2nd bar for TwoTails
-        int left2 = 2 * xPadding + BAR_WIDTH;
-        int percentHeadTails = (int)Math.round( numHeadTails / (double)numOfTrials * 100);
+        int left2 = 2 * xPadding + BAR_WIDTH;   //location of the left side of the bar
+        int percentHeadTails = (int)Math.round( numHeadTails / (double)numOfTrials * APPLICATION_UNIT_GROSS);
         String label2 = "A Head and a Tail: " + numHeadTails + "(" + percentHeadTails + "%)";
         Bar bar2 = new Bar(bottom, left2, BAR_WIDTH, percentHeadTails, scale, Color.GREEN , label2);
         bar2.draw(g2);
 
 
         // 3rd bar for HeadTails
-        int left3 = 3 * xPadding + 2 * BAR_WIDTH;
-        int percentTwoTails = (int)Math.round( numTwoTails /(double)numOfTrials * 100);
-        String label3 = "Two Tials: " + numTwoTails + "(" + percentTwoTails + "%)";
+        int left3 = 3 * xPadding + 2 * BAR_WIDTH;   //location of the left side of the bar
+        int percentTwoTails = (int)Math.round( numTwoTails /(double)numOfTrials * APPLICATION_UNIT_GROSS);
+        String label3 = "Two Tails: " + numTwoTails + "(" + percentTwoTails + "%)";
         Bar bar3 = new Bar(bottom, left3, BAR_WIDTH, percentTwoTails, scale, Color.BLUE , label3);
         bar3.draw(g2);
     }

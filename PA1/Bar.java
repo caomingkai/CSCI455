@@ -62,10 +62,11 @@ public class Bar {
     */
     public void draw(Graphics2D g2) {
 
-        int widthOfLabel = 0;
-        int heightOfLabel = 0;
-        int labelLeft = 0; // location of the left side of the label
-        int barHeightY = 0;// height of the bar in pixels, not in application units
+        int widthOfLabel = 0; // width of the label in pixels
+        int heightOfLabel = 0;// height of the label in pixels
+        int labelLeft = 0;    // location of the left side of the label
+        int barHeightY = 0;   // height of the bar in pixels, not in application units
+
 
         // Obtain the width of this.label to place it centered,
         // and the height of this.label to calculate buffer-space height
@@ -75,14 +76,15 @@ public class Bar {
         widthOfLabel = (int)labelBounds.getWidth();
         heightOfLabel = (int)labelBounds.getHeight();
 
-        // re-draw the label to place it in the center
+
+        // calculate the labelLeft value in order to place it in the center
         labelLeft = left - (widthOfLabel - width)/2;
 
         // draw the label to place it in the center
         g2.setColor(Color.BLACK);
         g2.drawString(this.label, labelLeft, bottom);
 
-        // calculate height of the bar in pixels, not in application unit
+        // calculate height of the bar in pixels, not in application-units
         barHeightY = (int)(bottom - heightOfLabel - barHeight * scale);
         Rectangle rectangleBar = new Rectangle(left, barHeightY ,width, (int)(barHeight * scale));
 
