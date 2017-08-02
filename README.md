@@ -28,61 +28,61 @@
    + next() will only return what comes before a space.
    + nextLine() automatically moves the scanner down after returning the current line.
 
-1. What i have noticed apart from next() scans only up to space whereas nextLine() scans the entire line is that next waits till it gets a complete token where as nextLine() does not wait for complete token, whenever '\n' is obtained(i.e when you press enter key) the scanner cursor moves to the next line and returns the previous line skipped. It does not check for the whether you have given complete input or not, even it will take an empty string where as next() does not take empty string
+ 1. What i have noticed apart from next() scans only up to space whereas nextLine() scans the entire line is that next waits till it gets a complete token where as nextLine() does not wait for complete token, whenever '\n' is obtained(i.e when you press enter key) the scanner cursor moves to the next line and returns the previous line skipped. It does not check for the whether you have given complete input or not, even it will take an empty string where as next() does not take empty string
 
-2－－whenever cast mechanism is used, the parentheses is a part of cast!!!   (int)(16.8)
+ 2. whenever cast mechanism is used, the parentheses is a part of cast!!!   (int)(16.8)
 
-3—-Whenever one of the arguments of the + operator is a string, the other argument is converted to a string.
-4— Never implement a method inside another method! Especially don’t write a method inside the main() method!
-	Java DO NOT allow nested method!
+ 3. Whenever one of the arguments of the + operator is a string, the other argument is converted to a string.
+ 4.  Never implement a method inside another method! Especially don’t write a method inside the main() method!
+Java DO NOT allow nested method!
 Solution1: write a STATIC method outside main() method, but within the same class(before or after main() is both OK). Because main() is static, which cannot call a non-static method.
 So the method to be implement has to be STATIC!
 
 Solution2: write a local Class inside the main(). Inside the local class, implement the desired method.
 
-5—- Scanner. in. close()??? When to use this?
+ 2. Scanner. in. close()??? When to use this?
 
 
-6——inherit适用的情况：subclass不能直接access到superclass中定义为private的instance variable以及method。
-－－－why❓或许这是java的机制问题，首先要符合标准一：private；然后标准二：extend。
-－－即便感觉这不是inherit的意思，但是总的来说，只要superclass中定义的access其private instance variable的public method，那么subclass就可以使用，这样就达到了代码reuse的目的。
-－－不要被inherit字面意思迷惑，private的instance variable以及 method并不会直接到subclass的内部；但是public的method，subclass可以直接使用
+ 3. inherit适用的情况：subclass不能直接access到superclass中定义为private的instance variable以及method。
+   - why❓或许这是java的机制问题，首先要符合标准一：private；然后标准二：extend。
+   - 即便感觉这不是inherit的意思，但是总的来说，只要superclass中定义的access其private instance variable的public method，那么subclass就可以使用，这样就达到了代码reuse的目的。
+   - 不要被inherit字面意思迷惑，private的instance variable以及 method并不会直接到subclass的内部；但是public的method，subclass可以直接使用
 
-7-－－－－ superclass constructor：must be the first statement of the subclass constructor。
+ 3. superclass constructor：must be the first statement of the subclass constructor。
 public ChoiceQuestion(String questionText)
 {
 	super(questionText);
 	choices = new ArrayList<String>;  ／／只要保证super constructor时第一个，可以跟subclass的成员变量声明
 }
-8-－－ polymorphism：［Dynamic method lookup］ allows us to treat objects of different classes in a uniform way.
-9-－－all variable and method, actually are called on an object.
+ 3.  polymorphism：［Dynamic method lookup］ allows us to treat objects of different classes in a uniform way.
+ 3. all variable and method, actually are called on an object.
 	if there is no explicit object preceding them, then it is the implicit object this
-10—abstract class/method:  forces the implementors of subclasses to specify concrete implementations of this method.
+ 3. abstract class/method:  forces the implementors of subclasses to specify concrete implementations of this method.
 	if there is no “abstract”, the programmer might forget, and thus get nothing to be implemented.
 	You cannot construct objects of classes with abstract methods,  you have to implement the abstract method.
 And you cannot construct an object of an abstract class.
 	When you declare a method as abstract, you force programmers to provide implementations in subclasses. This is better than coming up with a default that might be inherited accidentally
-11— final  class/method: prevent other programmers from creating classes or from overriding certain methods.
+ 3. final  class/method: prevent other programmers from creating classes or from overriding certain methods.
 	public final class String { . . . }
-	-That means that nobody can extend the String class. When you have a reference of type String, it must contain a String object, never an object of a subclass.
+	 - That means that nobody can extend the String class. When you have a reference of type String, it must contain a String object, never an object of a subclass.
 
-12. protected variable in an object can be accessed by the methods of the object’s class and all its subclasses. For example, ChoiceQuestion inherits from Question, so its methods can access the protected instance variables of the Question superclass.
-—drawback: it is not easily to be modified, since it is shared by super and sub class
+ 3. protected variable in an object can be accessed by the methods of the object’s class and all its subclasses. For example, ChoiceQuestion inherits from Question, so its methods can access the protected instance variables of the Question superclass.
+   - drawback: it is not easily to be modified, since it is shared by super and sub class
 	[“absolute protection ”] (making instance variables private)
  	[“no protection at all ”] (making instance variables public).
-13 ——Object: The Cosmic Superclass
+ 3. Object: The Cosmic Superclass
 	• toString(), which yields a string describing the object (Section 9.5.1).
 	• equals(),  which compares objects with each other (Section 9.5.2).
 	• hashCode() , which yields a numerical code for storing the object in a set
-14—— superclass  cast to subclass : instanceof => avoid dangerous cast
+ 3. superclass  cast to subclass : instanceof => avoid dangerous cast
 	if (anObject instanceof Question)
 	{
 		Question q = (Question) anObject;
 		. . .
 	}
-15—— this.getClass().getName()获得当前class的名字
+ 3. this.getClass().getName()获得当前class的名字
 
-16—— exception:   ” Throw Early, Catch L ate”
+ 3. exception:   ” Throw Early, Catch L ate”
 	·	throw : 由method 抛出 给调用者caller method（public void readData(String filename) throws FileNotFoundException）
 	·	try ： 执行某一几行语句
 	·	catch： 处理handle 异常exception 发生时，该做什么
@@ -100,12 +100,12 @@ And you cannot construct an object of an abstract class.
 	·	assert： assert amount >= 0; 如果条件不满足，那么抛出AssertionError Exception, try catch finally;   /  java -enableassertions MainClass 只有这样的话，才能enable assert
 
 
-17——Scanner(庞大) > BufferedReader(小巧)
+ 3. Scanner(庞大) > BufferedReader(小巧)
 	new Scanner(BufferedReader(FileReader("xanadu.txt”)));
 	new Scanner(new File("myNumbers"));
 
 
-18—— 1. public class MyComponent extends JComponent{
+ 3. 1. public class MyComponent extends JComponent{
 		@Override
 				public void paintComponent(Graphics g)
 				{
@@ -121,7 +121,7 @@ And you cannot construct an object of an abstract class.
 而且是只要用户resize( )窗口的大小，就会重新调用paintComponent( )函数
 		frame.setVisible(true);
 
-19 — —通过return的位置，来提高效率！！如果找到值马上返回！！！
+ 3. 通过return的位置，来提高效率！！如果找到值马上返回！！！
 对比Fig1 比Fig2要好！！
 			Fig1:
           public static int linearSearch( int[] a, int x ){
@@ -147,39 +147,39 @@ And you cannot construct an object of an abstract class.
 ￼
 
 
-20 －－－－－
+ 3.
 	- class：attribute and behaviour reuse
 	- interface: algorithm reuse by other objects
 	可重用算法<－>接口<－>不同class实现该接口（才可以使用算法）
 	interface不能有instance variable，但是可以有constant variable
-	－ comparable interface ： 排序接口（常用，同类排序）
-	－ comparator interface ： 比较接口（不常用，异类怎么比较大小）
+	- comparable interface ： 排序接口（常用，同类排序）
+	- comparator interface ： 比较接口（不常用，异类怎么比较大小）
 
-21. 复制对象，而非仅仅拷贝reference
+ 21. 复制对象，而非仅仅拷贝reference
 BankAccount clonedAccount = (BankAccount) account.clone();
-22. iterator object想象成 ‘光标’，就很容易理解了。
-	- Iterator 是 interface,一般已经在set／map／arraylist／linkedlist中implement了
-	- Iterator<String> myIter = mySet.iterator();
-23. 想要对一种DataType应用 HashSet、HashMap，来使用set／map特性时候，
+ 22. iterator object想象成 ‘光标’，就很容易理解了。
+   - Iterator 是 interface,一般已经在set／map／arraylist／linkedlist中implement了
+   - Iterator<String> myIter = mySet.iterator();
+ 23. 想要对一种DataType应用 HashSet、HashMap，来使用set／map特性时候，
 必须对这种DataType(API对象: String， 或者自定义对象: Student )提供两个函数，以供hash使用：
-	1 - hashcode( )
-	2 - equals( )
+	 - hashcode( )
+	 - equals( )
 	如果是Integer/String,不必提供； 但如果是自己构造的class，一定要现在class中implement equals( )之后，才能使用hashset<class>
-24. 想用TreeSet、TreeMap必须：
-	1 - implement comparable的compareTo() method)
-	2 - 生成时候就会按照comparable的方式排好序
-24.回溯法 backtrack < —> stack Data Structure 堆栈（P700/ P730）
+ 24. 想用TreeSet、TreeMap必须：
+	 - implement comparable的compareTo() method)
+	 - 生成时候就会按照comparable的方式排好序
+ 3. 回溯法 backtrack < —> stack Data Structure 堆栈（P700/ P730）
 
-25. inner class 与 its outer class
-	- structure:
-		- public outerName{
-			…
-			class innerName{
-				public var;
-				public method1(){}
-				public method2(){}
-			}
- 	 	}
-	- outer class can use public var and method of inner class
-	- inner class can use private var / method/ even inner class’s public var/ method
+ 25. inner class 与 its outer class
+	 - structure:
+		 - public outerName{
+			  …
+  			class innerName{
+  				public var;
+  				public method1(){}
+  				public method2(){}
+  			}
+ 	 	 }
+  	- outer class can use public var and method of inner class
+  	- inner class can use private var / method/ even inner class’s public var/ method
 	   which belongs to outer class
