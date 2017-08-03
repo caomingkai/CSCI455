@@ -54,50 +54,50 @@
       }
      ```
  3. polymorphism：［Dynamic method lookup］ allows us to treat objects of different classes in a uniform way.
-   + all variable and method, actually are called on an object. if there is no explicit object preceding them, then it is the implicit object this abstract class/method: forces the implementors of subclasses to specify concrete implementations of this method.
-	 + if there is no “abstract”, the programmer might forget, and thus get nothing to be implemented. You cannot construct objects of classes with abstract methods, you have to implement the abstract method. And you cannot construct an object of an abstract class.
-	 + When you declare a method as abstract, you force programmers to provide implementations in subclasses. This is better than coming up with a default that might be inherited accidentally
+     + all variable and method, actually are called on an object. if there is no explicit object preceding them, then it is the implicit object this abstract class/method: forces the implementors of subclasses to specify concrete implementations of this method.
+  	 + if there is no “abstract”, the programmer might forget, and thus get nothing to be implemented. You cannot construct objects of classes with abstract methods, you have to implement the abstract method. And you cannot construct an object of an abstract class.
+  	 + When you declare a method as abstract, you force programmers to provide implementations in subclasses. This is better than coming up with a default that might be inherited accidentally
 
  3. final  class/method: prevent other programmers from creating classes or from overriding certain methods.
 	public final class String { . . . }
-	  - That means that nobody can extend the String class. When you have a reference of type String, it must contain a String object, never an object of a subclass.
+	   - That means that nobody can extend the String class. When you have a reference of type String, it must contain a String object, never an object of a subclass.
 
  3. protected variable in an object can be accessed by the methods of the object’s class and all its subclasses. For example, ChoiceQuestion inherits from Question, so its methods can access the protected instance variables of the Question superclass.
-    - drawback: it is not easily to be modified, since it is shared by super and sub class
-	  - [“absolute protection ”] (making instance variables private)
-  	- [“no protection at all ”] (making instance variables public).
+     - drawback: it is not easily to be modified, since it is shared by super and sub class
+  	 - [“absolute protection ”] (making instance variables private)
+     - [“no protection at all ”] (making instance variables public).
  3. Object: The Cosmic Superclass
-  	- toString(), which yields a string describing the object (Section 9.5.1).
-  	- equals(),  which compares objects with each other (Section 9.5.2).
-  	- hashCode() , which yields a numerical code for storing the object in a set
+  	 - toString(), which yields a string describing the object (Section 9.5.1).
+  	 - equals(),  which compares objects with each other (Section 9.5.2).
+  	 - hashCode() , which yields a numerical code for storing the object in a set
  3. superclass  cast to subclass : instanceof => avoid dangerous cast
-    ```java
-      if (anObject instanceof Question)
-    	{
-    		Question q = (Question) anObject;
-    		. . .
-    	}
-    ```
+      ```java
+        if (anObject instanceof Question)
+      	{
+      		Question q = (Question) anObject;
+      		. . .
+      	}
+      ```
  3. this.getClass().getName()获得当前class的名字
 
  3. exception:   ” Throw Early, Catch L ate”
-	 + throw : 由method 抛出 给调用者caller method（public void readData(String filename) throws FileNotFoundException）
-	 + try ： 执行某一几行语句
-	 + catch： 处理handle 异常exception 发生时，该做什么
-		    checked exception(文件异常等非人为错误) 必须被handle
-	 + finally： if an exception occurs, the finally clause is also executed before the exception is passed to its handler.意思是 exception依然会被handle，只不过被handle之前，要先执行final中的句子
-	 + design a new exception：  将新的exception归类到(extend)已有的exception
-     ```java
-    	public class InsufficientFundsException  extends 	IllegalArgumentException
-    	{
-    		public InsufficientFundsException() {}
-    		public InsufficientFundsException(String message)
-    		{
-    			super(message);
-    		}
-    	}
-     ```
-	 + assert： assert amount >= 0; 如果条件不满足，那么抛出AssertionError Exception, try catch finally;   /  java -enableassertions MainClass 只有这样的话，才能enable assert
+  	 + throw : 由method 抛出 给调用者caller method（public void readData(String filename) throws FileNotFoundException）
+  	 + try ： 执行某一几行语句
+  	 + catch： 处理handle 异常exception 发生时，该做什么
+  		    checked exception(文件异常等非人为错误) 必须被handle
+  	 + finally： if an exception occurs, the finally clause is also executed before the exception is passed to its handler.意思是 exception依然会被handle，只不过被handle之前，要先执行final中的句子
+  	 + design a new exception：  将新的exception归类到(extend)已有的exception
+       ```java
+      	public class InsufficientFundsException  extends 	IllegalArgumentException
+      	{
+      		public InsufficientFundsException() {}
+      		public InsufficientFundsException(String message)
+      		{
+      			super(message);
+      		}
+      	}
+       ```
+  	 + assert： assert amount >= 0; 如果条件不满足，那么抛出AssertionError Exception, try catch finally;   /  java -enableassertions MainClass 只有这样的话，才能enable assert
 
  3. Scanner(庞大) > BufferedReader(小巧)
 	   + new Scanner(BufferedReader(FileReader("xanadu.txt”)));
@@ -106,23 +106,23 @@
 
 
  3. a code snippet
-    ```java
-      public class MyComponent extends JComponent{
-      @Override
-          public void paintComponent(Graphics g)
-          {
-            Graphics2D g2 = (Graphics2D) g;
-          }
-      }
+      ```java
+        public class MyComponent extends JComponent{
+        @Override
+            public void paintComponent(Graphics g)
+            {
+              Graphics2D g2 = (Graphics2D) g;
+            }
+        }
 
-      JFrame frame = new JFrame();
-      frame.setSize(300, 400);
-      frame.setTitle("Two rectangles");
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      RectangleComponent component = new RectangleComponent();
-      frame.add(component);//加了这句之后，Frame自动调用component的paintComponent()函数而且是只要用户resize( )窗口的大小，就会重新调用paintComponent( )函数
-      frame.setVisible(true);
-    ```
+        JFrame frame = new JFrame();
+        frame.setSize(300, 400);
+        frame.setTitle("Two rectangles");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        RectangleComponent component = new RectangleComponent();
+        frame.add(component);//加了这句之后，Frame自动调用component的paintComponent()函数而且是只要用户resize( )窗口的大小，就会重新调用paintComponent( )函数
+        frame.setVisible(true);
+      ```
  3. 通过return的位置，来提高效率！！如果找到值马上返回！！！对比Fig1 比Fig2要好！！
 		+ Fig1:
       ```java
@@ -149,12 +149,12 @@
       ```
 
  3. class VS interface
-  	- class：attribute and behaviour reuse
-  	- interface: algorithm reuse by other objects
-  	可重用算法<－>接口<－>不同class实现该接口（才可以使用算法）
-  	interface不能有instance variable，但是可以有constant variable
-  	- comparable interface ： 排序接口（常用，同类排序）
-  	- comparator interface ： 比较接口（不常用，异类怎么比较大小）
+    	- class：attribute and behaviour reuse
+    	- interface: algorithm reuse by other objects
+    	可重用算法<－>接口<－>不同class实现该接口（才可以使用算法）
+    	interface不能有instance variable，但是可以有constant variable
+    	- comparable interface ： 排序接口（常用，同类排序）
+    	- comparator interface ： 比较接口（不常用，异类怎么比较大小）
 
  21. 复制对象，而非仅仅拷贝reference
 BankAccount clonedAccount = (BankAccount) account.clone();
