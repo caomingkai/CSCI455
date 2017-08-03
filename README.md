@@ -46,14 +46,14 @@
     - 不要被inherit字面意思迷惑，private的instance variable以及 method并不会直接到subclass的内部；但是public的method，subclass可以直接使用
 
  3. superclass constructor：must be the first statement of the subclass constructor。
-   ```java
-    public ChoiceQuestion(String questionText)
-    {
-    	super(questionText);
-    	choices = new ArrayList<String>;  ／／只要保证super constructor时第一个，可以跟subclass的成员变量声明
-    }
-   ```
- 3.  polymorphism：［Dynamic method lookup］ allows us to treat objects of different classes in a uniform way.
+     ```java
+      public ChoiceQuestion(String questionText)
+      {
+      	super(questionText);
+      	choices = new ArrayList<String>;  ／／只要保证super constructor时第一个，可以跟subclass的成员变量声明
+      }
+     ```
+ 3. polymorphism：［Dynamic method lookup］ allows us to treat objects of different classes in a uniform way.
    + all variable and method, actually are called on an object. if there is no explicit object preceding them, then it is the implicit object this abstract class/method: forces the implementors of subclasses to specify concrete implementations of this method.
 	 + if there is no “abstract”, the programmer might forget, and thus get nothing to be implemented. You cannot construct objects of classes with abstract methods, you have to implement the abstract method. And you cannot construct an object of an abstract class.
 	 + When you declare a method as abstract, you force programmers to provide implementations in subclasses. This is better than coming up with a default that might be inherited accidentally
