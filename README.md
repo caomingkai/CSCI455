@@ -124,8 +124,9 @@
         frame.setVisible(true);
       ```
  3. 通过return的位置，来提高效率！！如果找到值马上返回！！！对比Fig1 比Fig2要好！！
-		+ Fig1:
+
       ```java
+        //  Fig1
         public static int linearSearch( int[] a, int x ){
             for( int i = 0; i < a.length; i++ ){
               if( a[i] == x ){
@@ -135,17 +136,17 @@
             return -1;
           }
       ```
-		+ Fig2:
       ```java
-             public static int linearSearch( int[] a, int x ){
-               int index = -1;
-               for( int i = 0; i < a.length; i++ ){
-                  if(a[i] == x) {
-                    index = i;
-                  }
-                }
-                return index;
+         //	Fig2
+         public static int linearSearch( int[] a, int x ){
+           int index = -1;
+           for( int i = 0; i < a.length; i++ ){
+              if(a[i] == x) {
+                index = i;
               }
+            }
+            return index;
+          }
       ```
 
  3. class VS interface
