@@ -1,0 +1,65 @@
+Name: Mingkai Cao
+USC NetId: 7151889244
+CSCI 455 PA1
+Spring 2017
+
+----------------------------------------------
+CERTIFY IT'S YOUR WORK
+
+"I certify that the work submitted for this assignment does not
+violate USC's student conduct code.  In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people, except for the the resources explicitly mentioned in the CS 455
+Course Syllabus.  And I did not share my solution or parts of it with
+other students in the course."
+
+Initial below to "sign" the above statement:
+
+I certify that the work submitted for this assignment does not
+violate USC’S student conduct code. In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people, except for the resources explicitly mentioned in the CS 455
+Course Syllabus. And I did not share my solution or parts of it with
+other students in the course.
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+List here any code you submitted for this assignment that was written
+with significant help of a course staff member, or code used from the
+textbook.  Be specific about what methods or algorithms are involved,
+and what sections of the textbook are involved (if applicable): [you do
+not need to list any of the code that we wrote for the assignment,
+i.e., the contents of the starter files for the assignment]
+
+
+
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+
+
+----------------------------------------------
+ANY OTHER NOTES FOR THE GRADER:
+
+
+
+----------------------------------------------
+ANSWERS TO ASSIGNMENT README QUESTIONS (if applicable):
+
+1. The probability is: 25% for two-head,  25% for two-tail, and 50% for head-tail.
+   Reason:
+   For two coins A and B, the result of a toss only have four outcomes: 
+   A-head / B-head
+   A-head / B-tail
+   A-tail / B-head
+   A-tail / B-tail
+   So we can see, there are 2 outcomes for the head-tail, and 1 outcome for both two-head  
+   and two-tails out of the total 4 outcomes.
+   Then we can say the probability is 25% for two-head,  25% for two-tail, and 50% for
+   head-tail.
+
+2. 4500
+3. The largest value I tried where it still worked correctly is 2147483647
+   And the one where it overflowed is 2147483648
+
+
